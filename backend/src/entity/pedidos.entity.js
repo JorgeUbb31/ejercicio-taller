@@ -57,13 +57,6 @@ const PedidosSchema = new EntitySchema({
             nullable: false,
         },
     },
-    indices: [
-        {
-            name: "IDX_PEDIDOS",
-            columns: ["id"],
-            unique: true,
-        },
-    ],
 });
 
 export const Pedidos = PedidosSchema;
