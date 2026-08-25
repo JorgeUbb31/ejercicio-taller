@@ -12,7 +12,7 @@ import {
 const router = Router();
 
 router
-  .use(authenticateJwt)
+  /*.use(authenticateJwt)*/
   .use(isAdmin);
 
 router
