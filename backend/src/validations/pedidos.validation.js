@@ -9,6 +9,13 @@ const rutValidator = (value, helper) => {
   return true;
 };
 
+const totalValidator = (value, helper) => {
+  if (value < 0) {
+    return helper.message("El total no puede ser negativo ni cero");
+  }
+    return true;
+};
+
 const pedidosValidation = joi.object({
   nombreCliente: joi.string().max(255).required(),
   rutCliente: joi.string().custom(rutValidator).required(),
@@ -39,12 +46,7 @@ const pedidosQueryValidation = joi.object({
   telefonoCliente: joi.string().custom(telefonoClienteValidator),
 }).or("id", "rutCliente", "telefonoCliente");
 
-const totalValidator = (value, helper) => {
-  if (value < 0) {
-    return helper.message("El total no puede ser negativo ni cero");
-  }
-    return true;
-};
+
 
 export { pedidosValidation, pedidosQueryValidation, totalValidator };
 

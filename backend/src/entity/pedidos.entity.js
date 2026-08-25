@@ -65,3 +65,6 @@ const PedidosSchema = new EntitySchema({
         },
     ],
 });
+
+export const Pedidos = PedidosSchema;
+export default PedidosSchema;

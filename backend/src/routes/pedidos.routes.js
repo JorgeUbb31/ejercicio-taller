@@ -19,7 +19,7 @@ router.use(authenticateJwt);
 
 router
     .get("/", getPedidos, isTrabajador)
-    .get("/:id", getPedido, isClient)
+    .get("/:id", getPedidos, isClient)
     .post("/", createPedidos)
     .put("/:id", updatePedidos)
     .delete("/:id", deletePedidos);

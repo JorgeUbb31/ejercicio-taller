@@ -1,11 +1,11 @@
 "use strict";
-import pedidos from "../entity/pedidos.entity.js";
+import { Pedidos } from "../entity/pedidos.entity.js";
 import { AppDataSource } from "../config/configDb.js";
 
 export async function getPedidosService(query) {
     try {
         const { id, rutCliente } = query;
-        const pedidosRepo = AppDataSource.getRepository(pedidos);
+        const pedidosRepo = AppDataSource.getRepository(Pedidos);
         const pedidosData = await pedidosRepo.find({ where: { id, rutCliente } });
         return pedidosData;
     } catch (error) {
@@ -15,7 +15,7 @@ export async function getPedidosService(query) {
 
 export async function createPedidosService(pedidoData) {
     try {
-        const pedidosRepo = AppDataSource.getRepository(pedidos);
+        const pedidosRepo = AppDataSource.getRepository(Pedidos);
         const newPedido = pedidosRepo.create(pedidoData);
         await pedidosRepo.save(newPedido);
         return newPedido;
@@ -26,7 +26,7 @@ export async function createPedidosService(pedidoData) {
 
 export async function updatePedidosService(id, updateData) {
     try {
-        const pedidosRepo = AppDataSource.getRepository(pedidos);
+        const pedidosRepo = AppDataSource.getRepository(Pedidos);
         const pedidoToUpdate = await pedidosRepo.findOne({ where: { id } });
         if (!pedidoToUpdate) {
             throw new Error("Pedido no encontrado");
@@ -41,7 +41,7 @@ export async function updatePedidosService(id, updateData) {
 
 export async function deletePedidosService(id) {
     try {
-        const pedidosRepo = AppDataSource.getRepository(pedidos);
+        const pedidosRepo = AppDataSource.getRepository(Pedidos);
         const pedidoToDelete = await pedidosRepo.findOne({ where: { id } });
         if (!pedidoToDelete) {
             throw new Error("Pedido no encontrado");
